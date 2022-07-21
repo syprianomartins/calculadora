@@ -1,0 +1,45 @@
+body{
+    margin-top: 6.25rem;
+    text-align: center;
+    background: #000;
+}
+section{
+    width: 15.625rem;
+    height: auto;
+    margin: auto;
+    padding: 1rem;
+    background-color: bisque;
+    border-radius: 0.625rem;
+    box-shadow: 0px 0px 1em rgb(146, 137, 137);
+}
+.bts{
+    margin: 0.2rem;
+    border-radius: 0.313rem;
+    width: 3.125rem;
+    height: 3.125rem;
+    font-size: 1rem;
+    font-weight: bolder;
+}
+#equal{
+    height: auto;
+    background-color: aquamarine;
+}
+#num{
+    height: 1.5rem;
+    width: 13.1rem;
+}
+.bts:hover{
+    background: whitesmoke;
+    box-shadow: 0px 0px 1em rgba(0, 0, 0, 0.2);
+}
+h1{
+    font: bold 19pt Arial;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+}
+.flex-equal{
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <header><h1>Calculadora</h1></header>
+        <input id="num"></input>
+        <div>
+            <p><b>Resultado:</b></p>
+            <p id="result">
+
+            </p>
+        </div>
+        <div id="buttons">
+            <div class="flex">
+                <input type="button" value="+" class="bts" id="sum">
+                <input type="button" value="-" class="bts" id="sub">
+                <input type="button" value="*" class="bts" id="mult">
+                <input type="button" value="%" class="bts" id="div">
+            </div>
+            <div class="flex-equal">
+                <div>
+                    <div class="flex">
+                        <input type="button" value="7" class="bts" id="seven">
+                        <input type="button" value="8" class="bts" id="eight">
+                        <input type="button" value="9" class="bts" id="nine">
+                    </div>
+                    <div class="flex">
+                        <input type="button" value="4" class="bts" id="four">
+                        <input type="button" value="5" class="bts" id="five">
+                        <input type="button" value="6" class="bts" id="six">
+                    </div>
+                    <div class="flex">
+                        <input type="button" value="1" class="bts" id="one">
+                        <input type="button" value="2" class="bts" id="two">
+                        <input type="button" value="3" class="bts" id="three">
+                    </div>
+                    <div class="flex">
+                        <input type="button" value="0" class="bts" id="zero">
+                        <input type="button" value="." class="bts" id="dot">
+                        <input type="button" value="C" class="bts" id="c">
+                    </div>
+                </div>
+                <input type="button" value="=" class="bts" id="equal">
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
