@@ -1,27 +1,60 @@
-const bts = document.querySelectorAll(".bts");
-const principal = document.querySelector("#num");
+const bts = document.querySelectorAll(".bts"); //todos os botões
+const principal = document.querySelector("#expression");
 const resultField = document.querySelector("#result");
 bts.forEach(bt => {
     bt.addEventListener("click", typing);
 });
+let currentResult = 0;
 
 function typing() {
-    let num = this.value;
+    let caractere = this.value;
     let valor = principal.value;
     let arr = [];
-
+    // checa se campo principal está vazio
     function isVazio(){
         if (valor && !isNaN(valor.substr(-1))){
-            principal.value += num;
+            principal.value += caractere;
         }
     }
     function equal(){
-        let arr = [];
         if(valor.includes("*")){
             arr = valor.split("*");
-            let currentResult = arr.reduce((acc, cur) => acc*cur);
-            resultField.innerHTML = currentResult;
+            //interrompe calculo se array só tiver um elemento
+            if(!arr[1]){
+                return;
+            }
+            currentResult = arr.reduce((acc, cur) => parseFloat(acc)*parseFloat(cur));
         }
+        else if(valor.includes("+")){
+            arr = principal.value.split("+");
+            if(!arr[1]){
+                return;
+            }
+            currentResult = arr.reduce((acc, cur) => parseFloat(acc)+parseFloat(cur));
+        }
+        else if(valor.includes("-")){
+            arr = principal.value.split("-");
+            if(!arr[1]){
+                return;
+            }
+            currentResult = arr.reduce((acc, cur) => parseFloat(acc)-parseFloat(cur));
+        }
+        else if(valor.includes("/")){
+            arr = principal.value.split("/");
+            if(!arr[1]){
+                return;
+            }
+            currentResult = arr.reduce((acc, cur) => parseFloat(acc)/parseFloat(cur));
+        }
+        else if(valor.includes("%")){
+            arr = principal.value.split("%");
+            if(!arr[1]){
+                return;
+            }
+            currentResult = arr.reduce((acc, cur) => parseFloat(acc)*(parseFloat(cur)/100));
+        }
+        resultField.textContent = `${valor} = ${currentResult}`;
+        principal.value = "";
     }
 
 
@@ -35,7 +68,7 @@ function typing() {
         "-": function(){
             isVazio();
         },
-        "%": function(){
+        "/": function(){
             isVazio();
         },
         "*": function(){
@@ -46,22 +79,43 @@ function typing() {
         },
         "=": function(){
             equal();
+        },
+        "%": function(){
+            isVazio();
         }
 
     }
-    if(!isNaN(num)){
+    // document.addEventListener("keypress", (e) => {
+    //     if(e.key === "Enter"){
+    //         equal();
+    //     }
+    // });
+    // checa se caractere digitado é um Numero
+    if(!isNaN(caractere)){
         if(isNaN(valor)){
             if(valor.includes("+")){
-                principal.value += num;
-                let arr = principal.value.split("+");
-                let currentResult = arr.reduce((acc, cur) => parseInt(acc)+parseInt(cur));
-                resultField.innerHTML = currentResult;
+                principal.value += caractere;
+            }
+            if(valor.includes("-")){
+                principal.value += caractere;
+            }
+            if(valor.includes("*")){
+                principal.value += caractere;
+            }
+            if(valor.includes("/")){
+                principal.value += caractere;
+            }
+            if(valor.includes("%")){
+                principal.value += caractere;
             }
         }else{
-            principal.value += num;
+            principal.value += caractere;
         }
     } else{
-        clicks[num]();
+        if(isNaN(valor) && caractere != "=" && caractere != "C" && caractere != "."){
+            return;
+        }
+        clicks[caractere]();
     }
-
+    
 }
